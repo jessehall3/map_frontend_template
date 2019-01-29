@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>GNV Housing Info Map</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@
             <h5 class="card-header">Search</h5>
             <div class="card-body">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input id="pac-input" type="text" class="form-control" placeholder="Search for...">
               </div>
             </div>
           </div>
@@ -70,16 +70,15 @@
         <!-- Blog Entries Column -->
         <div class="col-md-4">
           <div class="card mb-4">
-          <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
-          <div class="card-body">
+          <div class="infoWindow">
             <h4 class="card-title">Address</h4>
-            <p class="card-text">123 Main St, Gainesville, FL 32605, USA</p>
+            <p id="address" class="card-text">No Data Found</p>
             <h4 class="card-title">Owner</h4>
-            <p class="card-text">John Doe</p>
+            <p id="owner" class="card-text">No Data Found</p>
             <h4 class="card-title">Contact</h4>
-            <p class="card-text">Joe Smith</p>
+            <p id="contact" class="card-text">No Data Found</p>
             <h4 class="card-title">License Year</h4>
-            <p class="card-text">2014 - 2015</p>
+            <p id="landlord-license-year" class="card-text">No Data Found</p>
           </div>
         </div>
         </div>
@@ -88,9 +87,7 @@
         <div class="col-md-8">
           <!-- Blog Post -->
           <div class="card mb-4">
-            <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
-            <div class="card-body">
-              <h4 class="card-title">Hello World</h4>
+            <div id="map" class="card-body">
             </div>
           </div>
         </div>
@@ -111,7 +108,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="config.js"></script>
+    <script src="main.js"></script>
   </body>
 
 </html>

@@ -13,3 +13,7 @@ body {
     padding-top: 56px;
   }
 }
+
+#map {
+  height: 62vh;
+}
