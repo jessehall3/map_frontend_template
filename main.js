@@ -11,14 +11,14 @@ function initMap(){
 
   const autocomplete = new google.maps.places.Autocomplete(input);
 
-  const infowindow = new google.maps.InfoWindow();
-  const infowindowContent = document.getElementById('infoWindow');
-  infowindow.setContent(infowindowContent);
+  const infoWindow = new google.maps.InfoWindow();
+  const infoWindowContent = document.getElementById('infoWindow');
+  infoWindow.setContent(infoWindowContent);
   const marker = new google.maps.Marker({
     map: map
   });
   marker.addListener('click', function() {
-    infowindow.open(map, marker);
+    infoWindow.open(map, marker);
   });
 
   const showLicenseInfo = (myJson) => {
@@ -42,7 +42,7 @@ function initMap(){
   };
 
   autocomplete.addListener('place_changed', function() {
-    infowindow.close();
+    infoWindow.close();
     var place = autocomplete.getPlace();
     (async function() {
       let url = _config.db_url;
