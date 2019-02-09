@@ -22,23 +22,19 @@ function initMap(){
   });
 
   const showLicenseInfo = (myJson) => {
-    let p;
-    if (myJson.address){
-      p = document.querySelector("#address");
-      p.innerText = myJson.address;
-    }
-    if (myJson.owner_name){
-      p = document.querySelector("#owner");
-      p.innerText = myJson.owner_name;
-    }
-    if (myJson.contact_name){
-      p = document.querySelector("#contact");
-      p.innerText = myJson.contact_name;
-    }
-    if (myJson.landlord_license_year){
-      p = document.querySelector("#landlord-license-year");
-      p.innerText = myJson.landlord_license_year;
-    }
+    const not_found = "No Information Found"
+
+    const address_p = document.querySelector("#address")
+    address_p.innerText = myJson.address || not_found
+
+    const owner_p = document.querySelector("#owner")
+    owner_p.innerText = myJson.owner_name || not_found
+
+    const contact_p = document.querySelector("#contact")
+    contact_p.innerText = myJson.contact_name || not_found
+
+    const years_p = document.querySelector("#landlord-license-year")
+    years_p.innerText = myJson.landlord_license_year || not_found
   };
 
   autocomplete.addListener('place_changed', function() {
@@ -51,10 +47,7 @@ function initMap(){
         let placeId = place.place_id
         let response = await fetch(url + placeId)
         let myJson = await response.json();
-        if (Object.keys(myJson).length) {
-          showLicenseInfo(myJson);
-          console.log(myJson);
-        }
+        showLicenseInfo(myJson);
       }
       catch(e) {
         console.log(e);
