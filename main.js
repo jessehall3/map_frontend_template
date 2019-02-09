@@ -25,9 +25,9 @@ function initMap(){
   const showLicenseInfo = (myJson) => {
     const key2id = {
       address: "address",
-      owner_name: "owner",
-      contact_name: "contact",
-      landlord_license_year: "landord-license-year",
+      owner_name: "owner-name",
+      contact_name: "contact-name",
+      landlord_license_year: "landlord-license-year",
     }
 
     const not_found = "No Information Found"
@@ -37,17 +37,6 @@ function initMap(){
       const p = document.querySelector("#" + id)
       p.innerText = myJson[key] || not_found
     })
-    // const address_p = document.querySelector("#address")
-    // address_p.innerText = myJson.address || not_found
-    //
-    // const owner_p = document.querySelector("#owner")
-    // owner_p.innerText = myJson.owner_name || not_found
-    //
-    // const contact_p = document.querySelector("#contact")
-    // contact_p.innerText = myJson.contact_name || not_found
-    //
-    // const years_p = document.querySelector("#landlord-license-year")
-    // years_p.innerText = myJson.landlord_license_year || not_found
   };
 
   autocomplete.addListener('place_changed', function() {
