@@ -22,7 +22,18 @@ function initMap(){
   });
 
 
-  const showLicenseInfo = (myJson) => {
+  const showLicenseInfo = async function(place) {
+    let myJson
+    const placeId = place.place_id
+
+    try{
+      let response = await fetch(_config.db_url+ placeId)
+      myJson = await response.json();
+    }
+    catch(e) {
+      console.log(e);
+    }
+
     const key2id = {
       address: "address",
       owner_name: "owner-name",
@@ -41,20 +52,9 @@ function initMap(){
 
   autocomplete.addListener('place_changed', function() {
     infoWindow.close();
-    var place = autocomplete.getPlace();
-    (async function() {
-      let url = _config.db_url;
-      try{
-        let place = await autocomplete.getPlace();
-        let placeId = place.place_id
-        let response = await fetch(url + placeId)
-        let myJson = await response.json();
-        showLicenseInfo(myJson);
-      }
-      catch(e) {
-        console.log(e);
-      }
-    })();
+
+    const place = autocomplete.getPlace();
+    showLicenseInfo(place);
 
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
