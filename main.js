@@ -61,9 +61,11 @@ function initMap(){
     catch(e) {
       console.log(e)
     }
-
-    const firstItem = myJson[0]
-    const kwhConsumption = firstItem["kwh_consumption"]
+    console.log(myJson);
+    let kwhConsumption
+    if (myJson[0] && myJson[0]["kwh_consumption"]){
+      kwhConsumption = myJson[0]["kwh_consumption"]
+    }
 
     const not_found = "No Information Found"
 
@@ -79,20 +81,22 @@ function initMap(){
     showLicenseInfo(place)
     showElectricInfo(place)
 
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport)
-    }
-    else {
-      map.setCenter(place.geometry.location)
-      map.setZoom(17)
-    }
+    if(place && place.geometry){
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport)
+      }
+      else {
+        map.setCenter(place.geometry.location)
+        map.setZoom(17)
+      }
 
-    // Set the position of the marker using the place ID and location.
-    marker.setPlace({
-      placeId: place.place_id,
-      location: place.geometry.location
-    })
-    marker.setVisible(true)
+      // Set the position of the marker using the place ID and location.
+      marker.setPlace({
+        placeId: place.place_id,
+        location: place.geometry.location
+      })
+      marker.setVisible(true)
+    }
   })
 }
 
