@@ -69,8 +69,8 @@ function initMap(){
       console.log(e)
     }
     let kwhConsumption
-    if (myJson[0] && myJson[0]["kwh_consumption"]){
-      kwhConsumption = myJson[0]["kwh_consumption"]
+    if (myJson[0] && myJson[0]["kwhConsumption"]){
+      kwhConsumption = myJson[0]["kwhConsumption"]
     }
 
     const not_found = "No Information Found"
