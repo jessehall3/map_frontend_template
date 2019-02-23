@@ -24,6 +24,7 @@ function initMap(){
 
   const showLicenseInfo = async function(place) {
     let myJson = {}
+    console.log("Place: ", JSON.stringify(place, null, 2))
     const placeId = place.place_id
 
     try{
@@ -51,17 +52,22 @@ function initMap(){
   }
 
   const showElectricInfo = async function(place) {
+    console.log("PLACE: ", place);
     let myJson = {}
     const placeId = place.place_id
 
+    const formattedAddress = encodeURIComponent(place.formatted_address.trim())
+    const aptNumber="1028"
+    const ecSearchString = `?address=${formattedAddress}&unit-number=${aptNumber}`
+
     try{
-      let response = await fetch(_config.electricConsumptionUrl + placeId)
+      let response = await fetch(_config.electricConsumptionUrl + ecSearchString)
       myJson = await response.json()
+      console.log("RESPONSE: ", myJson);
     }
     catch(e) {
       console.log(e)
     }
-    console.log(myJson);
     let kwhConsumption
     if (myJson[0] && myJson[0]["kwh_consumption"]){
       kwhConsumption = myJson[0]["kwh_consumption"]
